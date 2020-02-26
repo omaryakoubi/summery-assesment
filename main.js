@@ -23,7 +23,7 @@ function each(coll, f) {
 
 function filter(array, predicate) {
   var acc = [];
-  each(array, function(element, i) {
+  each(array, function (element, i) {
     if (predicate(element, i)) {
       acc.push(element);
     }
@@ -33,7 +33,7 @@ function filter(array, predicate) {
 
 function map(array, func) {
   var acc = [];
-  each(array, function(element, i) {
+  each(array, function (element, i) {
     acc.push(func(element, i));
   });
   return acc;
@@ -44,11 +44,12 @@ function reduce(array, f, acc) {
     acc = array[0];
     array = array.slice(1);
   }
-  each(array, function(element, i) {
+  each(array, function (element, i) {
     acc = f(acc, element, i);
   });
   return acc;
 }
+
 
 //=============================================================================
 /*                              Q1                                           */
@@ -58,9 +59,13 @@ function reduce(array, f, acc) {
 //solve it using the most appropriate helper functions(reduce,each,map,filter).
 //wordLengths("hello its me") // [5,3,2]
 
-function wordLengths(str) {
-    // TODO: your code here 
-}
+function wordLengths(string) {
+  var str = string.split(' ');
+  return map(str, function (str) {
+    return str.length
+  });
+
+};
 
 //=============================================================================
 /*                                  Q2                                    */
@@ -72,7 +77,19 @@ function wordLengths(str) {
 // countOccurrences("hello, world!", "l"); // 3
 
 function countOccurrences(string, character) {
-    // your code is here
+  var str = string.split("");
+  var count = 0;
+  return each(str, function (str) {
+    if (str === str) {
+      return count + 1
+    }
+    return 0
+
+
+
+
+
+  })
 }
 
 //=============================================================================
@@ -83,9 +100,12 @@ function countOccurrences(string, character) {
 //solve it using the most appropriate helper functions(reduce,each,map,filter).
 // wordsLongerThanThree("Hello Mad World") //["Hello", "World"]
 
-function wordsLongerThanThree(str) {
-    // TODO: your code here 
-}
+function wordsLongerThanThree(string) {
+  var str = string.split(' ');
+  return filter(str, function (str) {
+    return str.length > 3
+  });
+};
 
 //=============================================================================
 /*                                  Q4                                        */
@@ -98,23 +118,26 @@ function wordsLongerThanThree(str) {
 //repeatString('dog', 2); // => 'dog' + 'dog' => 'dogdog' 
 //repeatString('dog', 3); // => 'dog' + 'dog' + 'dog' => 'dogdogdog'
 
-function repeatString(str, count) { 
- // TODO: your code here 
-} 
- 
+function repeatString(str, count) {
+  if (count === 0) {
+    return " "
+  };
+  return str + repeatString(str, count - 1)
+};
+
 
 //=============================================================================
 /*                                  Q5                                       */
 //=============================================================================
 /*
  using closures create a function called makePizza that has the following properties and methods
- crust a property represented by a string. ex "thin","thick". 
+ crust a property represented by a string. ex "thin","thick".
  size a property represented by a string. ex "M","L".
  numberOfSlice a property that hold the number of slice, ex: 8
- ** the values of all properties will be provided as arguments in the function invocation. 
+ ** the values of all properties will be provided as arguments in the function invocation.
  addIngredients a function that add a new ingredient to the ingredients property.
  displayIngredients a function that displays a comma separated string of all ingredients. ex: The ingredients are:tomato,mushroom,meat
- bakePizza a function that display a string with your pizza description after 2 seconds. ex "Your thin M 8 slice pizza is done" 
+ bakePizza a function that display a string with your pizza description after 2 seconds. ex "Your thin M 8 slice pizza is done"
  eatSlice a function that let you eat from the pizza as long as the numberOfSlice is greater than zero and decrease the total number of slices by one.
  */
 //Example:
@@ -216,12 +239,16 @@ d- Decrement the number of "unread" books
 //================================================================================
 // Theoretical questions.
 // 1- In your own words,Why do we use Closures ?
+// Reply Q1 | We Use Closures to make the variabales accesible only for the Assigned function, and not redable for the other variables. | 
 
-// 2- In OOP, what does "this" refer to ?
+// 2- In OOP, what does "this" refer to
+// Reply Q2 | This in OOP refer |
 
 // 3- What is jQuery?
+// Reply Q3 | jQuery is a library of javaScript, We can write javascript functions using jQuery to won time & lines in code. |
 
 // 4- what is the diffrence between Closure's methods and The OOP's methods?
+// Reply Q4 | The difference between Closure's methos and OOP method is in the Closure works with variables and in the OOP works with objects "Object Oriented Programming". |
 
 
 
